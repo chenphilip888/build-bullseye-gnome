@@ -68,15 +68,7 @@ apt-get install -y build-essential git libssl-dev nmap net-tools libncurses5-dev
 chmod o+x /usr/lib/dbus-1.0/dbus-daemon-launch-helper
 chmod +x /etc/rc.local
 
-if [ "$BOARD" == "radxa" ]; then
-#------------------rkwifibt------------
-echo -e "\033[36m Install rkwifibt.................... \033[0m"
-dpkg -i  /packages/rkwifibt/*.deb
-apt-get install -f -y
-mkdir /vendor
-mkdir /vendor/etc
-ln -sf /system/etc/firmware /vendor/etc/
-elif [ "$BOARD" == "rpi4b" ]; then
+if [ "$BOARD" == "rpi4b" ]; then
 #------------------rpiwifi-------------
 echo -e "\033[36m Install rpiwifi..................... \033[0m"
 dpkg -i /packages/rpiwifi/firmware-brcm80211_20210315-3_all.deb
@@ -84,7 +76,6 @@ cp /packages/rpiwifi/brcmfmac43455-sdio.txt /lib/firmware/brcm/
 apt-get install -f -y
 fi
 
-systemctl enable rockchip.service
 systemctl enable resize-helper
 
 #---------------Clean--------------

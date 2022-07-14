@@ -80,8 +80,9 @@ Setup wifi for rpi4b: sudo nmcli dev wifi connect "SSID" password "PASSWD"
 sudo ifconfig
 sudo dpkg-reconfigure tzdata
 sudo dpkg-reconfigure locales
+sync
 sudo reboot
-ps aux |grep -i apt
+ps aux |grep -i apt ( wait till all apt done except grep -i apt )
 sudo apt update
 sudo apt upgrade
 glxinfo | grep OpenGL
